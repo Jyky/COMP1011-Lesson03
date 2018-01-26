@@ -9,15 +9,15 @@
  */
 
 // Private PROPERTIES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-public class Vehicle {
-	private int numWheels = 4;
-	private int numDoors = 2;
-	private String colour = "";
-	private String make = "";
-	private String model = "";
-	private String year = "";
-	private float speed = 0f;
-	private final int MAX_SPEED = 40;
+public abstract class Vehicle {
+	protected int numWheels = 4;
+	protected int numDoors = 2;
+	protected String colour = "";
+	protected String make = "";
+	protected String model = "";
+	protected String year = "";
+	protected float speed = 0f;
+	protected final int MAX_SPEED = 40;
 	
 // GETTERS METHOD  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	/**
@@ -75,25 +75,29 @@ public class Vehicle {
 	}
 	
 	//CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	public Vehicle(){
+	public Vehicle(int wheels, int doors, String colour, String make, String model, String year){
+		this.numWheels = wheels;
+		this.numDoors = doors;
+		this.colour = colour;
+		this.make = make;
+		this.model = model;
+		this.year = year;
+		
 		
 	}
 	
+	public Vehicle(String colour, String make, String model, String year) {
+		// TODO Auto-generated constructor stub
+		this.colour = colour;
+		this.make = make;
+		this.model = model;
+		this.year = year;
+	}
+
 	// Public METHODS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	public void accelerate(){
-		this.speed += 4;
-		if(this.speed >= this.MAX_SPEED){
-			this.speed = this.MAX_SPEED;
-		}
-		
-	}
+	public abstract void accelerate();
 	
-	public void decelerate(){
-		this.speed -= 6;
-		if(this.speed <0){
-			this.speed = 0;
-		}
-	}
+	public abstract void decelerate();
 	
 	public void turnLeft(){
 		System.out.println("Turning Left");
